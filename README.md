@@ -1,16 +1,3 @@
-const { default: makeWASocket, useMultiFileAuthState } = require("@whiskeysockets /baileys");
-async function iniciarBot() { const { state, saveCreds } = await useMultiFileAuthState("./session");
-const sock makeWASocket({ auth; state, printQRInTerminal: true });
-saveCreds); sock.ev.on("creds.update",
-sock.ev.on("connection.update" ({ connection }) => {
-if (connection ===
-"open") {
-console.log("✓ Bot conectado correctamente.");
-}
-});
-}
-iniciarBot();
-
 # ⚓ Trafalgar Law Bot
 
 > "ROOM."
@@ -484,3 +471,25 @@ Bot inspirado en Trafalgar D. Water Law de One Piece.
 > Hacer cosquillas
 ✧ `#walk` _<mencion>_
 > Caminar
+
+
+const { default: makeWASocket, useMultiFileAuthState } = require("@whiskeysockets/baileys");
+
+async function iniciarBot() {
+    const { state, saveCreds } = await useMultiFileAuthState("./session");
+
+    const sock = makeWASocket({
+        auth: state,
+        printQRInTerminal: true
+    });
+
+    sock.ev.on("creds.update", saveCreds);
+
+    sock.ev.on("connection.update", ({ connection }) => {
+        if (connection === "open") {
+            console.log("✅ Bot conectado correctamente.");
+        }
+    });
+}
+
+iniciarBot();
