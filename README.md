@@ -493,3 +493,8 @@ async function iniciarBot() {
 }
 
 iniciarBot();
+if (!sock.authState.creds.registered) {
+  const numero = "503XXXXXXXX"; // Tu número con código de país, sin +
+  const code = await sock.requestPairingCode(numero);
+  console.log(`Código de vinculación: ${code}`);
+}
