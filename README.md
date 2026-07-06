@@ -1,3 +1,16 @@
+const { default: makeWASocket, useMultiFileAuthState } = require("@whiskeysockets /baileys");
+async function iniciarBot() { const { state, saveCreds } = await useMultiFileAuthState("./session");
+const sock makeWASocket({ auth; state, printQRInTerminal: true });
+saveCreds); sock.ev.on("creds.update",
+sock.ev.on("connection.update" ({ connection }) => {
+if (connection ===
+"open") {
+console.log("✓ Bot conectado correctamente.");
+}
+});
+}
+iniciarBot();
+
 # ⚓ Trafalgar Law Bot
 
 > "ROOM."
